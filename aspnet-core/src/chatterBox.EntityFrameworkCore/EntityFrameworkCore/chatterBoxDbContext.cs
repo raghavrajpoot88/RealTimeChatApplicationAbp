@@ -1,4 +1,5 @@
 ﻿
+using chatterBox.Logs;
 using chatterBox.Messages;
 using Microsoft.EntityFrameworkCore;
 using Volo.Abp.AuditLogging.EntityFrameworkCore;
@@ -41,6 +42,7 @@ public class chatterBoxDbContext :
      */
     ////public 
     public DbSet<MessageInfo> messageInfo { get; set; }
+    public DbSet<RequestLogs> logs { get; set; }
 
     //Identity
     public DbSet<IdentityUser> Users { get; set; }

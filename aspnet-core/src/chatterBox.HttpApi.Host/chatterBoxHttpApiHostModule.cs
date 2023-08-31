@@ -28,6 +28,7 @@ using Volo.Abp.Modularity;
 using Volo.Abp.Swashbuckle;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
+using chatterBox.Middleware;
 
 namespace chatterBox;
 
@@ -61,6 +62,9 @@ public class chatterBoxHttpApiHostModule : AbpModule
     {
         var configuration = context.Services.GetConfiguration();
         var hostingEnvironment = context.Services.GetHostingEnvironment();
+
+        context.Services.AddScoped<customMiddleware>();
+
 
         ConfigureAuthentication(context);
         ConfigureBundles();
@@ -201,6 +205,7 @@ public class chatterBoxHttpApiHostModule : AbpModule
 
         app.UseUnitOfWork();
         app.UseAuthorization();
+        app.UseMiddleware<customMiddleware>();
 
         app.UseSwagger();
         app.UseAbpSwaggerUI(c =>

@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\chatterBox.Application.Contracts\chatterBox.Application.Contracts.csproj" />
+    <ProjectReference Include="..\chatterBox.EntityFrameworkCore\chatterBox.EntityFrameworkCore.csproj" />
   </ItemGroup>
 
   <ItemGroup>
