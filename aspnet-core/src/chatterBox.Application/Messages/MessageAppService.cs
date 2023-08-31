@@ -31,6 +31,12 @@ namespace chatterBox.Message
             _currentUser = currentUser;
             _dbContext = dbContext;
         }
+        public Guid GetCurrentUser()
+        {
+            var CurrentUser = _currentUser.GetId();
+            return CurrentUser;
+        }
+
         public async Task<MessageInfo> send(CreateMessageDto msg)
         {
             var CurrentUser = _currentUser.GetId();
@@ -91,6 +97,14 @@ namespace chatterBox.Message
                 return true;
             }
             return false;
+        }
+        public async Task<IEnumerable<MessageInfo>> GetSearch(string query)
+        {
+            var currentUserId = _currentUser.GetId();
+            var normalizedQuery = query.ToLower();
+            var SearchedMessages = _dbContext.messageInfo.Where(m => (m.SenderId == currentUserId || m.ReceiverId == currentUserId) && m.MsgBody
+            .ToLower().Contains(normalizedQuery)).ToList();
+            return SearchedMessages;
         }
         
     }

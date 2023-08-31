@@ -14,5 +14,6 @@ public class chatterBoxApplicationAutoMapperProfile : Profile
          * into multiple profile classes for a better organization. */
         CreateMap<IdentityUser, UserDto>();
         CreateMap<MessageInfo, MessageDto>();
+        CreateMap<IdentitySecurityLog, RequestLogDto>();
     }
 }
