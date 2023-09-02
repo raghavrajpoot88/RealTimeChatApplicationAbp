@@ -64,7 +64,7 @@ namespace chatterBox.Middleware
 
                 log.creationTime = DateTime.Now;
                 HttpRequest httpRequest = httpContext.Request;
-
+                
                 //log 
                 log.Id = Guid.NewGuid().ToString();
                 var ip = httpRequest.HttpContext.Connection.RemoteIpAddress;

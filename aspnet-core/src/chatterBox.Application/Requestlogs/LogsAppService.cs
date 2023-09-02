@@ -1,6 +1,7 @@
 ﻿using Abp.Json;
 using chatterBox.DTO;
 using chatterBox.EntityFrameworkCore;
+using chatterBox.Logs;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -25,14 +26,14 @@ namespace chatterBox.Requestlogs
 
         }
 
-        public async Task<IEnumerable<RequestLogDto>> GetLogs(int timeSpan)
+        public async Task<IEnumerable<RequestLogs>> GetLogs(int timeSpan)
         {
             DateTime endTime = DateTime.Now;
             DateTime startTime = endTime.AddMinutes(-timeSpan);
             
-            var result = await _dbContext.SecurityLogs.Where(log => (log.CreationTime >= startTime && log.CreationTime <= endTime)).OrderByDescending
-                (m => m.CreationTime).ToListAsync();
-            return ObjectMapper.Map<List<IdentitySecurityLog>, List<RequestLogDto>>(result);
+            var result = await _dbContext.logs.Where(log => (log.creationTime >= startTime && log.creationTime <= endTime)).OrderByDescending
+                (m => m.creationTime).ToListAsync();
+            return result;
         }
 
 }
