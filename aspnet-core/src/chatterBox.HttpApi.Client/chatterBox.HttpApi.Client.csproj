@@ -26,4 +26,10 @@
     <Content Remove="**\*generate-proxy.json" />
   </ItemGroup>
 
+  <ItemGroup Condition="'$(TargetFramework)' == 'net7.0'">
+    <PackageReference Include="Volo.Abp.AspNetCore.SignalR">
+      <Version>7.3.2</Version>
+    </PackageReference>
+  </ItemGroup>
+
 </Project>

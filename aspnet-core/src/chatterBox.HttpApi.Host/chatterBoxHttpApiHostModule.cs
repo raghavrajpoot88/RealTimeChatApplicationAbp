@@ -29,6 +29,8 @@ using Volo.Abp.Swashbuckle;
 using Volo.Abp.UI.Navigation.Urls;
 using Volo.Abp.VirtualFileSystem;
 using chatterBox.Middleware;
+using chatterBox.Mapping;
+using Volo.Abp.AspNetCore.SignalR;
 
 namespace chatterBox;
 
@@ -41,7 +43,8 @@ namespace chatterBox;
     typeof(AbpAspNetCoreMvcUiLeptonXLiteThemeModule),
     typeof(AbpAccountWebOpenIddictModule),
     typeof(AbpAspNetCoreSerilogModule),
-    typeof(AbpSwashbuckleModule)
+    typeof(AbpSwashbuckleModule),
+    typeof(AbpAspNetCoreSignalRModule)
 )]
 public class chatterBoxHttpApiHostModule : AbpModule
 {
@@ -64,6 +67,8 @@ public class chatterBoxHttpApiHostModule : AbpModule
         var hostingEnvironment = context.Services.GetHostingEnvironment();
 
         context.Services.AddScoped<customMiddleware>();
+
+        context.Services.AddScoped<ConnectionMapping<string>>();
 
 
         ConfigureAuthentication(context);

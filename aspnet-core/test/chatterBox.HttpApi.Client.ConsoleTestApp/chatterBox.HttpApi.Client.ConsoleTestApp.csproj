@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="7.3.2" />
     <PackageReference Include="Volo.Abp.Http.Client.IdentityModel" Version="7.3.2" />
     <PackageReference Include="Volo.Abp.Autofac" Version="7.3.2" />
     <ProjectReference Include="..\..\src\chatterBox.HttpApi.Client\chatterBox.HttpApi.Client.csproj" />

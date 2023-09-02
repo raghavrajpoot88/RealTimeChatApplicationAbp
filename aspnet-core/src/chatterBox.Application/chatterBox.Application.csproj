@@ -17,11 +17,16 @@
 
   <ItemGroup>
     <PackageReference Include="Volo.Abp.Account.Application" Version="7.3.2" />
+    <PackageReference Include="Volo.Abp.AspNetCore.SignalR" Version="7.3.2" />
     <PackageReference Include="Volo.Abp.Identity.Application" Version="7.3.2" />
     <PackageReference Include="Volo.Abp.PermissionManagement.Application" Version="7.3.2" />
     <PackageReference Include="Volo.Abp.TenantManagement.Application" Version="7.3.2" />
     <PackageReference Include="Volo.Abp.FeatureManagement.Application" Version="7.3.2" />
     <PackageReference Include="Volo.Abp.SettingManagement.Application" Version="7.3.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Mapping\" />
   </ItemGroup>
 
 </Project>
